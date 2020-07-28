@@ -830,7 +830,7 @@
             output = numeral._.numberToFormat(value, format, roundingFunction);
 
             // update the before and after based on value
-            if (value >= 0) {
+            if (value >= 0 || (!output.includes('(') && !output.includes('-'))) {
                 symbols.before = symbols.before.replace(/[\-\(]/, '');
                 symbols.after = symbols.after.replace(/[\-\)]/, '');
             } else if (value < 0 && (!numeral._.includes(symbols.before, '-') && !numeral._.includes(symbols.before, '(')) && output.includes('-')) {
